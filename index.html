@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+  
+
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center" id="start-prompt">
+            <h1>Start the quiz</h1>
+            <button id="start-game" class="btn btn-primary">Get Started</button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col text-center">
+        <div id="question-prompt" style="display:none">
+        <h2 id="question-text"> </h2>\
+        <div id="question-options"></div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+    <script>
+     var startGamebtn = document.querySelector("#start-game");
+     var startPrompt = document.querySelector("#start-prompt");
+     var questionPrompt = document.querySelector("#question-prompt");
+     var questionText = document.querySelector("#question-text");
+     var questionOptions = document.querySelector("question-options");
+
+     var question = {
+         text: "What is the name?",
+         options: ["blue", "green" , "red"],
+         answer: "red",
+     };
+
+     var questionIndex= 0;
+
+     startGamebtn.addEventListener("click", function (e) {
+        startPrompt.style.display= "none";
+        questionPrompt.style.display="block";
+        renderQuestion ();
+
+
+
+
+
+     });
+
+     function renderQuestion () {
+        var question = question[questionIndex];
+     questionText.textContent= question.text;
+     questionOptions.innerHTML= "";
+
+     for (var i=0; i < questionOptions.lenght; i++) {
+         var btn = document.createElement("button");
+         btn.setAttribute("class", "btn btn-primary question-option");
+         btn.setAttribute("value", question.options[i]);
+         btn.textContent= question.options[i];
+         questionOptions.append(btn);
+     }
+
+
+     }
+
+     document.body.addEventListener("click", function (e) {
+        if (!e.target.mathces(".question-option")) return;
+        var value = e.target.value;
+        if (questions[questionIndex].answer=== value){
+            console.log("correct");
+        }
+
+
+
+
+
+     });
+   
+
+
+
+    </script>
+
+
+
+  
+</body>
+</html>
